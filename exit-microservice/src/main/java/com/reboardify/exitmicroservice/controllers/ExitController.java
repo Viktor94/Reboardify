@@ -30,8 +30,9 @@ public class ExitController {
 
     ResponseEntity<?> response = webClientBuilder.build()
         .post()
-        .uri(url + employee.getId())
+        .uri(url)
         .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+        .body(Mono.just(employee), Employee.class)
         .retrieve()
         .toBodilessEntity()
         .onErrorResume(WebClientResponseException.class,
