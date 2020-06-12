@@ -25,7 +25,7 @@ public class DatabaseController {
       return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
 
-    if (authorized.size() > maxAllowedEmployee) {
+    if (authorized.size() >= maxAllowedEmployee) {
       queue.add(employee.getId());
     } else {
       authorized.add(employee.getId());
