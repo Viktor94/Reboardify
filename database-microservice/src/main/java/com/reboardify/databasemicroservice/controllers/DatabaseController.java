@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,16 +35,14 @@ public class DatabaseController {
     return new ResponseEntity<>(HttpStatus.OK);
   }
 
-  @GetMapping("/position")
-  public ResponseEntity<?> employeePosition(@RequestBody Employee employee) {
-    if (authorized.contains(employee.getId())) {
-      Position position = new Position(0);
-
-      return ResponseEntity.ok(position);
+  @GetMapping("/position/{id}")
+  public ResponseEntity<?> employeePosition(@PathVariable String id) {
+    Position position;
+    if (authorized.contains(id)) {
+      position = new Position(0);
     } else {
-      Position position = new Position(queue.indexOf(employee.getId()) + 1);
-
-      return ResponseEntity.ok(position);
+      position = new Position(queue.indexOf(id) + 1);
     }
+    return ResponseEntity.ok(position);
   }
 }
