@@ -1,7 +1,5 @@
 package com.reboardify.databasemicroservice.models;
 
-import java.util.UUID;
-
 public class Employee {
 
   private String id;
