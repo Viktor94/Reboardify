@@ -20,12 +20,16 @@ import reactor.core.publisher.Mono;
 @RestController
 public class RegisterController {
 
-  @Qualifier("getWebclientBuilder")
-  @Autowired
   private Builder webclientBuilder;
+  private ResponseService responseService;
 
   @Autowired
-  private ResponseService responseService;
+  public RegisterController(
+      @Qualifier("getWebclientBuilder") Builder webclientBuilder,
+      ResponseService responseService) {
+    this.webclientBuilder = webclientBuilder;
+    this.responseService = responseService;
+  }
 
   @PostMapping("/register")
   public ResponseEntity<?> register(@RequestBody Employee employee) {

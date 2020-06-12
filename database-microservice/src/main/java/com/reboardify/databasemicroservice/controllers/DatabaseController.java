@@ -1,7 +1,6 @@
 package com.reboardify.databasemicroservice.controllers;
 
 import com.reboardify.databasemicroservice.models.Employee;
-import com.reboardify.databasemicroservice.models.Message;
 import com.reboardify.databasemicroservice.models.Position;
 import java.util.LinkedList;
 import org.springframework.http.HttpStatus;
@@ -41,23 +40,20 @@ public class DatabaseController {
     Position position;
     if (authorized.contains(id)) {
       position = new Position(0);
-    } else {
+    } else if(queue.contains(id)){
       position = new Position(queue.indexOf(id) + 1);
+    } else {
+      position = new Position(-1);
     }
-    return ResponseEntity.ok(position);
+      return ResponseEntity.ok(position);
   }
 
-  @GetMapping("/entry")
-  public ResponseEntity<?> entry(@RequestBody Employee employee) {
-    Message message;
-    if (authorized.contains(employee.getId())) {
-      message = new Message("You can enter!");
-
-      return ResponseEntity.ok(message);
+  @GetMapping("/entry/{id}")
+  public ResponseEntity<?> entry(@PathVariable String id) {
+    if (authorized.contains(id)) {
+      return new ResponseEntity<>(HttpStatus.OK);
     } else {
-      message = new Message("You are not allowed to enter!");
-
-      return new ResponseEntity<>(message, HttpStatus.CONFLICT);
+      return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
   }
 
