@@ -3,7 +3,6 @@ package com.reboardify.registermicroservice.controllers;
 import com.reboardify.registermicroservice.models.Employee;
 import com.reboardify.registermicroservice.models.ErrorMessage;
 import com.reboardify.registermicroservice.services.ResponseService;
-import java.net.ConnectException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpHeaders;
@@ -20,8 +19,8 @@ import reactor.core.publisher.Mono;
 @RestController
 public class RegisterController {
 
-  private Builder webclientBuilder;
-  private ResponseService responseService;
+  private final Builder webclientBuilder;
+  private final ResponseService responseService;
 
   @Autowired
   public RegisterController(
@@ -35,7 +34,7 @@ public class RegisterController {
   public ResponseEntity<?> register(@RequestBody Employee employee) {
     String url = System.getenv("DB_MS_URL");
     try {
-      ResponseEntity response = webclientBuilder.build()
+      ResponseEntity<?> response = webclientBuilder.build()
           .post()
           .uri(url + "/employee")
           .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)

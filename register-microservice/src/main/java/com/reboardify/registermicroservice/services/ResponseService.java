@@ -4,6 +4,5 @@ import org.springframework.http.ResponseEntity;
 
 public interface ResponseService {
 
-  ResponseEntity checkServerResponse(ResponseEntity responseEntity);
-
+  ResponseEntity<?> checkServerResponse(ResponseEntity<?> responseEntity);
 }

@@ -8,13 +8,12 @@ import org.springframework.web.reactive.function.client.WebClient;
 @SpringBootApplication
 public class StatusMicroserviceApplication {
 
-	@Bean
-	public WebClient.Builder getWebClientBuilder() {
-		return WebClient.builder();
-	}
+  @Bean
+  public WebClient.Builder getWebClientBuilder() {
+    return WebClient.builder();
+  }
 
-	public static void main(String[] args) {
-		SpringApplication.run(StatusMicroserviceApplication.class, args);
-	}
-
+  public static void main(String[] args) {
+    SpringApplication.run(StatusMicroserviceApplication.class, args);
+  }
 }

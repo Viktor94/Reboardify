@@ -1,13 +1,13 @@
 package com.reboardify.entrymicroservice.models;
 
-public class ErrorMessage {
+public class Message {
 
   private String message;
 
-  public ErrorMessage() {
+  public Message() {
   }
 
-  public ErrorMessage(String message) {
+  public Message(String message) {
     this.message = message;
   }
 

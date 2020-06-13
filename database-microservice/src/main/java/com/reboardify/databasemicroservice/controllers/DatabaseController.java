@@ -1,6 +1,7 @@
 package com.reboardify.databasemicroservice.controllers;
 
 import com.reboardify.databasemicroservice.models.Employee;
+import com.reboardify.databasemicroservice.models.EntryStatus;
 import com.reboardify.databasemicroservice.models.Position;
 import java.util.LinkedList;
 import org.springframework.http.HttpStatus;
@@ -40,20 +41,20 @@ public class DatabaseController {
     Position position;
     if (authorized.contains(id)) {
       position = new Position(0);
-    } else if(queue.contains(id)){
+    } else if (queue.contains(id)) {
       position = new Position(queue.indexOf(id) + 1);
     } else {
       position = new Position(-1);
     }
-      return ResponseEntity.ok(position);
+    return ResponseEntity.ok(position);
   }
 
   @GetMapping("/entry/{id}")
   public ResponseEntity<?> entry(@PathVariable String id) {
     if (authorized.contains(id)) {
-      return new ResponseEntity<>(HttpStatus.OK);
+      return new ResponseEntity<>(new EntryStatus(id, true), HttpStatus.OK);
     } else {
-      return new ResponseEntity<>(HttpStatus.CONFLICT);
+      return new ResponseEntity<>(new EntryStatus(id, false), HttpStatus.OK);
     }
   }
 
@@ -62,9 +63,9 @@ public class DatabaseController {
     if (authorized.contains(employee.getId())) {
       authorized.remove(employee.getId());
 
-      return new ResponseEntity<>(HttpStatus.OK);
+      return new ResponseEntity<>(new EntryStatus(employee.getId(), true), HttpStatus.OK);
     } else {
-      return new ResponseEntity<>(HttpStatus.CONFLICT);
+      return new ResponseEntity<>(new EntryStatus(employee.getId(), false), HttpStatus.OK);
     }
   }
 }

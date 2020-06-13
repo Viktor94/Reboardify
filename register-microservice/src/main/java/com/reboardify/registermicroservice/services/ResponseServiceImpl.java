@@ -6,10 +6,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ResponseServiceImpl implements ResponseService{
+public class ResponseServiceImpl implements ResponseService {
 
   @Override
-  public ResponseEntity checkServerResponse(ResponseEntity response) {
+  public ResponseEntity<?> checkServerResponse(ResponseEntity<?> response) {
     assert response != null;
     if (response.getStatusCode().is4xxClientError()) {
       return new ResponseEntity<>(new ErrorMessage("This ID is already registered!"),
@@ -19,7 +19,7 @@ public class ResponseServiceImpl implements ResponseService{
           new ErrorMessage("The server is not responding, please try again later."),
           HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
-    return new ResponseEntity<>(HttpStatus.OK);
+    return new ResponseEntity<>(new ErrorMessage("You have registered successfully!"),
+        HttpStatus.OK);
   }
 }

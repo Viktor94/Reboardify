@@ -16,5 +16,4 @@ public class EntryMicroserviceApplication {
   public static void main(String[] args) {
     SpringApplication.run(EntryMicroserviceApplication.class, args);
   }
-
 }
