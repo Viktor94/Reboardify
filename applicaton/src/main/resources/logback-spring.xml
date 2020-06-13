@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <property name="LOGS" value="./logs"/>
+  <appender name="Console"
+    class="ch.qos.logback.core.ConsoleAppender">
+    <layout class="ch.qos.logback.classic.PatternLayout">
+      <Pattern>
+        %d{yyyy-MM-dd HH:mm:ss} %highlight(%-5level) --- [%15thread] %cyan(%-50.50logger{36}) : %black(%msg) %n
+      </Pattern>
+    </layout>
+  </appender>
+  <appender name="RollingFile"
+    class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${LOGS}/reboardify-boot-logger.log</file>
+    <encoder
+      class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <Pattern>%d{yyyy-MM-dd HH:mm:ss} %p [%t] %logger{36} : %m%n</Pattern>
+    </encoder>
+    <rollingPolicy
+      class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${LOGS}/archived/reboardify-boot-logger-%d{yyyy-MM-dd}.log
+      </fileNamePattern>
+      <maxHistory>10</maxHistory>
+      <totalSizeCap>100MB</totalSizeCap>
+    </rollingPolicy>
+  </appender>
+  <appender name="SevereRollingFile"
+    class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${LOGS}/reboardify-severe-logger.log</file>
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>WARN</level>
+    </filter>
+    <encoder
+      class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <Pattern>%d{yyyy-MM-dd HH:mm:ss} %p [%t] %logger{36} : %m%n</Pattern>
+    </encoder>
+    <rollingPolicy
+      class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${LOGS}/archived/reboardify-severe-logger-%d{yyyy-MM-dd}.log
+      </fileNamePattern>
+      <maxHistory>10</maxHistory>
+      <totalSizeCap>100MB</totalSizeCap>
+    </rollingPolicy>
+  </appender>
+  <!-- LOG everything at INFO level -->
+  <root level="info">
+    <appender-ref ref="Console"/>
+  </root>
+  <!--LOG "com.reboardify.application.*" at TRACE level -->
+  <logger name="com.reboardify.application" level="trace" additivity="false">
+    <appender-ref ref="RollingFile"/>
+    <appender-ref ref="Console"/>
+    <appender-ref ref="SevereRollingFile"/>
+  </logger>
+</configuration>

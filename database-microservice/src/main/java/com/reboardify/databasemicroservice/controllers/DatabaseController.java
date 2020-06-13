@@ -3,6 +3,10 @@ package com.reboardify.databasemicroservice.controllers;
 import com.reboardify.databasemicroservice.models.Employee;
 import com.reboardify.databasemicroservice.models.EntryStatus;
 import com.reboardify.databasemicroservice.models.Position;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.LinkedList;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,22 +21,23 @@ public class DatabaseController {
 
   private final LinkedList<String> authorized = new LinkedList<>();
   private final LinkedList<String> queue = new LinkedList<>();
+  private Date date = new Date();
 
   @PostMapping("/employee")
   public ResponseEntity<?> registerUserDetails(@RequestBody Employee employee) {
+    dailyReset();
+
     int maxCapacity = Integer.parseInt(System.getenv("CAPACITY"));
     int maxAllowedEmployee = 250 * maxCapacity / 100;
 
     if (queue.contains(employee.getId()) || authorized.contains(employee.getId())) {
       return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
-
     if (authorized.size() >= maxAllowedEmployee) {
       queue.add(employee.getId());
     } else {
       authorized.add(employee.getId());
     }
-
     return new ResponseEntity<>(HttpStatus.OK);
   }
 
@@ -66,6 +71,23 @@ public class DatabaseController {
       return new ResponseEntity<>(new EntryStatus(employee.getId(), true), HttpStatus.OK);
     } else {
       return new ResponseEntity<>(new EntryStatus(employee.getId(), false), HttpStatus.OK);
+    }
+  }
+
+  private void dailyReset() {
+    Calendar cal = Calendar.getInstance();
+    cal.setTime(date);
+    int day = cal.get(Calendar.DAY_OF_MONTH);
+    System.out.println(day);
+    Date newDate = new Date();
+    cal.setTime(newDate);
+    int newDay = cal.get(Calendar.DAY_OF_MONTH);
+    System.out.println(newDay);
+
+    if(day != newDay) {
+      authorized.clear();
+      queue.clear();
+      date = newDate;
     }
   }
 }

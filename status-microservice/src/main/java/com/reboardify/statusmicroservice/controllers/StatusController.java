@@ -34,7 +34,7 @@ public class StatusController {
 
     ResponseEntity<?> response = Objects.requireNonNull(webclientBuilder.build()
         .get()
-        .uri(url + employee.getId())
+        .uri(url + "/position/" + employee.getId())
         .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
         .exchange()
         .block())
