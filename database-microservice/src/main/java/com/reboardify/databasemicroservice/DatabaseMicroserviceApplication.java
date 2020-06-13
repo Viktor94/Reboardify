@@ -9,5 +9,4 @@ public class DatabaseMicroserviceApplication {
   public static void main(String[] args) {
     SpringApplication.run(DatabaseMicroserviceApplication.class, args);
   }
-
 }

@@ -1,4 +1,4 @@
-package com.reboardify.registermicroservice.services;
+package com.reboardify.exitmicroservice.services;
 
 import org.springframework.http.ResponseEntity;
 

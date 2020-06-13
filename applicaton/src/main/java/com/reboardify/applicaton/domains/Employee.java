@@ -1,4 +1,4 @@
-package com.reboardify.registermicroservice.models;
+package com.reboardify.applicaton.domains;
 
 public class Employee {
 
