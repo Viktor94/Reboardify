@@ -1,13 +1,10 @@
 package com.reboardify.databasemicroservice.controllers;
 
+import com.reboardify.databasemicroservice.models.AccessStatus;
 import com.reboardify.databasemicroservice.models.Employee;
-import com.reboardify.databasemicroservice.models.EntryStatus;
 import com.reboardify.databasemicroservice.models.Position;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.LinkedList;
+import com.reboardify.databasemicroservice.services.DatabaseService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,24 +16,31 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DatabaseController {
 
-  private final LinkedList<String> authorized = new LinkedList<>();
-  private final LinkedList<String> queue = new LinkedList<>();
-  private Date date = new Date();
+  private DatabaseService databaseService;
+
+  @Autowired
+  public DatabaseController(DatabaseService databaseService) {
+    this.databaseService = databaseService;
+  }
 
   @PostMapping("/employee")
   public ResponseEntity<?> registerUserDetails(@RequestBody Employee employee) {
-    dailyReset();
+    databaseService.dailyReset();
+
+    if (employee == null) {
+      return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
 
     int maxCapacity = Integer.parseInt(System.getenv("CAPACITY"));
     int maxAllowedEmployee = 250 * maxCapacity / 100;
 
-    if (queue.contains(employee.getId()) || authorized.contains(employee.getId())) {
+    if (databaseService.isInQueueList(employee) || databaseService.isInAuthorizedList(employee)) {
       return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
-    if (authorized.size() >= maxAllowedEmployee) {
-      queue.add(employee.getId());
+    if (databaseService.getAuthorizedList().size() >= maxAllowedEmployee) {
+      databaseService.addToQueueList(employee);
     } else {
-      authorized.add(employee.getId());
+      databaseService.addToAuthorizedList(employee);
     }
     return new ResponseEntity<>(HttpStatus.OK);
   }
@@ -44,10 +48,11 @@ public class DatabaseController {
   @GetMapping("/position/{id}")
   public ResponseEntity<?> employeePosition(@PathVariable String id) {
     Position position;
-    if (authorized.contains(id)) {
+    Employee employee = new Employee(id);
+    if (databaseService.isInAuthorizedList(employee)) {
       position = new Position(0);
-    } else if (queue.contains(id)) {
-      position = new Position(queue.indexOf(id) + 1);
+    } else if (databaseService.isInQueueList(employee)) {
+      position = databaseService.getPosition(employee);
     } else {
       position = new Position(-1);
     }
@@ -56,38 +61,21 @@ public class DatabaseController {
 
   @GetMapping("/entry/{id}")
   public ResponseEntity<?> entry(@PathVariable String id) {
-    if (authorized.contains(id)) {
-      return new ResponseEntity<>(new EntryStatus(id, true), HttpStatus.OK);
+    if (databaseService.isInAuthorizedList(new Employee(id))) {
+      return new ResponseEntity<>(new AccessStatus(id, true), HttpStatus.OK);
     } else {
-      return new ResponseEntity<>(new EntryStatus(id, false), HttpStatus.OK);
+      return new ResponseEntity<>(new AccessStatus(id, false), HttpStatus.OK);
     }
   }
 
   @PostMapping("/exit")
   public ResponseEntity<?> exit(@RequestBody Employee employee) {
-    if (authorized.contains(employee.getId())) {
-      authorized.remove(employee.getId());
-
-      return new ResponseEntity<>(new EntryStatus(employee.getId(), true), HttpStatus.OK);
+    if (databaseService.isInAuthorizedList(employee)) {
+      databaseService.removeFromAuthorizedList(employee);
+      databaseService.moveFirstFromQueueToAuthorized();
+      return new ResponseEntity<>(new AccessStatus(employee.getId(), true), HttpStatus.OK);
     } else {
-      return new ResponseEntity<>(new EntryStatus(employee.getId(), false), HttpStatus.OK);
-    }
-  }
-
-  private void dailyReset() {
-    Calendar cal = Calendar.getInstance();
-    cal.setTime(date);
-    int day = cal.get(Calendar.DAY_OF_MONTH);
-    System.out.println(day);
-    Date newDate = new Date();
-    cal.setTime(newDate);
-    int newDay = cal.get(Calendar.DAY_OF_MONTH);
-    System.out.println(newDay);
-
-    if(day != newDay) {
-      authorized.clear();
-      queue.clear();
-      date = newDate;
+      return new ResponseEntity<>(new AccessStatus(employee.getId(), false), HttpStatus.OK);
     }
   }
 }

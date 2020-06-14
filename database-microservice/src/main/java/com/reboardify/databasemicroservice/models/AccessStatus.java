@@ -1,14 +1,14 @@
 package com.reboardify.databasemicroservice.models;
 
-public class EntryStatus {
+public class AccessStatus {
 
-  String id;
-  Boolean isAuthorized;
+  private String id;
+  private Boolean isAuthorized;
 
-  public EntryStatus() {
+  public AccessStatus() {
   }
 
-  public EntryStatus(String id, Boolean isAuthorized) {
+  public AccessStatus(String id, Boolean isAuthorized) {
     this.id = id;
     this.isAuthorized = isAuthorized;
   }
