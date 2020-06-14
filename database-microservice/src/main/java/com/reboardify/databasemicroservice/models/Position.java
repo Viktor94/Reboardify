@@ -4,6 +4,9 @@ public class Position {
 
   private Integer position;
 
+  public Position() {
+  }
+
   public Position(Integer position) {
     this.position = position;
   }
