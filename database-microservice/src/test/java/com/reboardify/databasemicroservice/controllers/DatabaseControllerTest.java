@@ -30,9 +30,9 @@ class DatabaseControllerTest {
   @Autowired
   private MockMvc mockMvc;
 
-  private DatabaseService databaseService = new DatabaseServiceImpl();
+  private final DatabaseService databaseService = new DatabaseServiceImpl();
 
-  private MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(),
+  private final MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(),
       MediaType.APPLICATION_JSON.getSubtype(),
       StandardCharsets.UTF_8);
   private ObjectMapper objectMapper;

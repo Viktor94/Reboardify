@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DatabaseController {
 
-  private DatabaseService databaseService;
+  private final DatabaseService databaseService;
 
   @Autowired
   public DatabaseController(DatabaseService databaseService) {

@@ -1,7 +1,6 @@
 package com.reboardify.databasemicroservice.services;
 
 import com.reboardify.databasemicroservice.models.Employee;
-import java.util.Date;
 import java.util.LinkedList;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,7 +10,7 @@ class DatabaseServiceImplTest {
 
   private LinkedList<String> authorized;
   private LinkedList<String> queue;
-  private DatabaseService databaseService = new DatabaseServiceImpl();
+  private final DatabaseService databaseService = new DatabaseServiceImpl();
   private Employee employee;
 
   @BeforeEach
@@ -109,7 +108,7 @@ class DatabaseServiceImplTest {
 
   @Test
   void moveFirstFromQueueToAuthorized_QueueList_Empty() {
-    Assertions.assertDoesNotThrow(() -> databaseService.moveFirstFromQueueToAuthorized());
+    Assertions.assertDoesNotThrow(databaseService::moveFirstFromQueueToAuthorized);
   }
 
   @Test
@@ -137,5 +136,4 @@ class DatabaseServiceImplTest {
     Assertions.assertTrue(databaseService.isInAuthorizedList(employee));
     Assertions.assertTrue(databaseService.isInQueueList(employee2));
   }
-
 }
