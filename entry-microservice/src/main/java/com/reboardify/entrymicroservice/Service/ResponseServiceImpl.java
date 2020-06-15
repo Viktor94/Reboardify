@@ -9,6 +9,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class ResponseServiceImpl implements ResponseService {
 
+  /**
+   * <p>This method is used to process the response from the database microservice</p>
+   *
+   * @param response The response entity from the microservice
+   * @return It returns with a response entity containing a message with the status
+   */
   @Override
   public ResponseEntity<?> checkServerResponse(ResponseEntity<?> response) {
     assert response != null;

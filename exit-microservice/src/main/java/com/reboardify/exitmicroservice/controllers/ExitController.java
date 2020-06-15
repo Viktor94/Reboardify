@@ -14,10 +14,19 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.WebClient.Builder;
 import reactor.core.publisher.Mono;
 
+/**
+ * Rest controller to process incoming http requests
+ */
 @RestController
 public class ExitController {
 
+  /**
+   * The builder is used to make http requests
+   */
   private final Builder webClientBuilder;
+  /**
+   * Response service is used to process the responses
+   */
   private final ResponseService responseService;
 
   @Autowired
@@ -27,6 +36,10 @@ public class ExitController {
     this.responseService = responseService;
   }
 
+  /**
+   * <p>This method sends an http request to the database microservice
+   * when the employee tries to leave</p>
+   */
   @PostMapping("/exit")
   public ResponseEntity<?> exit(@RequestBody Employee employee) {
     String url = System.getenv("DB_MS_URL");

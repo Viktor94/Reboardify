@@ -1,7 +1,13 @@
 package com.reboardify.applicaton.domains;
 
+/**
+ * Employee is used to create an employee object from an id.
+ */
 public class Employee {
 
+  /**
+   * This variable is used to store the id of the employee.
+   */
   private String id;
 
   public Employee() {
