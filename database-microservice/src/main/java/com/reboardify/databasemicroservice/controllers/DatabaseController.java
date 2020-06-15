@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * The Database Controller is used to store and modify authorized and in queue employees
+ */
 @RestController
 public class DatabaseController {
 
@@ -23,6 +26,12 @@ public class DatabaseController {
     this.databaseService = databaseService;
   }
 
+  /**
+   * <p>This method adds the employee to the authorized or to the queue list.</p>
+   *
+   * @param employee contains the id of the employee
+   * @return It returns a bodiless response entity after the registration
+   */
   @PostMapping("/employee")
   public ResponseEntity<?> registerUserDetails(@RequestBody Employee employee) {
     databaseService.dailyReset();
@@ -45,6 +54,12 @@ public class DatabaseController {
     return new ResponseEntity<>(HttpStatus.OK);
   }
 
+  /**
+   * <p>This method returns the position of the employee</p>
+   *
+   * @param id The id of the employee
+   * @return It returns a response entity with a position in the body after the position request
+   */
   @GetMapping("/position/{id}")
   public ResponseEntity<?> employeePosition(@PathVariable String id) {
     Position position;
@@ -59,6 +74,12 @@ public class DatabaseController {
     return ResponseEntity.ok(position);
   }
 
+  /**
+   * <p>This method returns the access status of an employee</p>
+   *
+   * @param id The id of the employee
+   * @return It returns a response entity after the entry request with the access status in the body
+   */
   @GetMapping("/entry/{id}")
   public ResponseEntity<?> entry(@PathVariable String id) {
     if (databaseService.isInAuthorizedList(new Employee(id))) {
@@ -68,6 +89,12 @@ public class DatabaseController {
     }
   }
 
+  /**
+   * <p>This method removes the employee from the authorized list.</p>
+   *
+   * @param employee The id of the employee
+   * @return It returns a response entity after the exit request with the access status in the body
+   */
   @PostMapping("/exit")
   public ResponseEntity<?> exit(@RequestBody Employee employee) {
     if (databaseService.isInAuthorizedList(employee)) {

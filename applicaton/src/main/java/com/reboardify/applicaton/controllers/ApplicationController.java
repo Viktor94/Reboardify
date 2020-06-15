@@ -19,7 +19,7 @@ import reactor.core.publisher.Mono;
 @RestController
 public class ApplicationController {
 
-  private Logger logger = LoggerFactory.getLogger(ApplicationController.class);
+  private final Logger logger = LoggerFactory.getLogger(ApplicationController.class);
   private final Builder webclientBuilder;
 
   @Autowired
@@ -47,7 +47,7 @@ public class ApplicationController {
   public ResponseEntity<?> invokeEntryService(@RequestBody Employee employee) {
     String url = "http://ENTRY-SERVICE/entry";
     logger.info("User: " + employee.getId() + " attempted to enter.");
-    ResponseEntity responseEntity = sendRequest(url, employee);
+    ResponseEntity<?> responseEntity = sendRequest(url, employee);
     Message message = (Message) responseEntity.getBody();
     if (message != null) {
       logger.info(message.getMessage());
@@ -59,7 +59,7 @@ public class ApplicationController {
   public ResponseEntity<?> invokeExitService(@RequestBody Employee employee) {
     String url = "http://EXIT-SERVICE/exit";
     logger.info("User: " + employee.getId() + " attempted to exit.");
-    ResponseEntity responseEntity = sendRequest(url, employee);
+    ResponseEntity<?> responseEntity = sendRequest(url, employee);
     Message message = (Message) responseEntity.getBody();
     if (message != null) {
       logger.info(message.getMessage());
@@ -67,7 +67,7 @@ public class ApplicationController {
     return responseEntity;
   }
 
-  private ResponseEntity sendRequest(String url, Employee employee) {
+  private ResponseEntity<?> sendRequest(String url, Employee employee) {
     return webclientBuilder.build()
         .post()
         .uri(url)

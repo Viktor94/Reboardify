@@ -1,7 +1,13 @@
 package com.reboardify.databasemicroservice.models;
 
+/**
+ * Message is used to send response in the body.
+ */
 public class Message {
 
+  /**
+   * This variable is used to store the message.
+   */
   private String message;
 
   public Message(String message) {

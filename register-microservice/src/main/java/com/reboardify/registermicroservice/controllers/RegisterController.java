@@ -16,10 +16,19 @@ import org.springframework.web.reactive.function.client.WebClient.Builder;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 import reactor.core.publisher.Mono;
 
+/**
+ * Rest controller to process incoming http requests
+ */
 @RestController
 public class RegisterController {
 
+  /**
+   * The builder is used to make http requests
+   */
   private final Builder webclientBuilder;
+  /**
+   * Response service is used to process the responses
+   */
   private final ResponseService responseService;
 
   @Autowired
@@ -30,6 +39,10 @@ public class RegisterController {
     this.responseService = responseService;
   }
 
+  /**
+   * <p>This method sends an http request to the database microservice
+   * when the employee tries to register</p>
+   */
   @PostMapping("/register")
   public ResponseEntity<?> register(@RequestBody Employee employee) {
     String url = System.getenv("DB_MS_URL");

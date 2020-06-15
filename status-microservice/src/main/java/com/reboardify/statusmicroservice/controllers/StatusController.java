@@ -14,11 +14,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.WebClient.Builder;
 
+/**
+ * Rest controller to process incoming http requests
+ */
 @RestController
 public class StatusController {
 
+  /**
+   * The builder is used to make http requests
+   */
   private final Builder webclientBuilder;
-
+  /**
+   * Response service is used to process the responses
+   */
   private final StatusService statusService;
 
   @Autowired
@@ -28,6 +36,11 @@ public class StatusController {
     this.statusService = statusService;
   }
 
+  /**
+   * <p>This method sends an http request to the database microservice
+   * when the employee tries to get the status</p>
+   * @return it returns with a response entity containing a message
+   */
   @PostMapping("/status")
   public ResponseEntity<?> getPosition(@RequestBody Employee employee) {
     String url = System.getenv("DB_MS_URL");

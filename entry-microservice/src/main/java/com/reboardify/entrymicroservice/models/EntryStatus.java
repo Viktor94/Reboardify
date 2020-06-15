@@ -1,9 +1,18 @@
 package com.reboardify.entrymicroservice.models;
 
+/**
+ * EntryStatus is used to tell if an employee can enter or exit the office.
+ */
 public class EntryStatus {
 
-  String id;
-  Boolean isAuthorized;
+  /**
+   * This variable is used to store the id of the employee
+   */
+  private String id;
+  /**
+   * This variable is used to check if the employee is authorized.
+   */
+  private Boolean isAuthorized;
 
   public EntryStatus() {
   }
