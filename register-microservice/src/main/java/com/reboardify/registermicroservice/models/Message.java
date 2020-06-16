@@ -3,14 +3,14 @@ package com.reboardify.registermicroservice.models;
 /**
  * Message is used to send response in the body.
  */
-public class ErrorMessage {
+public class Message {
 
   /**
    * This variable is used to store the message.
    */
   private String message;
 
-  public ErrorMessage(String message) {
+  public Message(String message) {
     this.message = message;
   }
 

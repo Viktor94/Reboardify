@@ -39,7 +39,7 @@ public class StatusController {
   /**
    * <p>This method sends an http request to the database microservice
    * when the employee tries to get the status</p>
-   *
+   * @param employee employee is used to get the id of it
    * @return it returns with a response entity containing a message
    */
   @PostMapping("/status")

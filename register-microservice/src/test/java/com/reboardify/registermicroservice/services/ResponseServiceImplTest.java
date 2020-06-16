@@ -1,6 +1,6 @@
 package com.reboardify.registermicroservice.services;
 
-import com.reboardify.registermicroservice.models.ErrorMessage;
+import com.reboardify.registermicroservice.models.Message;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
@@ -14,11 +14,11 @@ public class ResponseServiceImplTest {
   @Test
   public void checkServerResponseWithOk() {
     responseEntity = new ResponseEntity<>(HttpStatus.OK);
-    ErrorMessage result = (ErrorMessage) responseService.checkServerResponse(responseEntity)
+    Message result = (Message) responseService.checkServerResponse(responseEntity)
         .getBody();
-    ErrorMessage errorMessage = new ErrorMessage("You have registered successfully!");
+    Message message = new Message("You have registered successfully!");
 
-    Assert.assertEquals(errorMessage.getMessage(), result.getMessage());
+    Assert.assertEquals(message.getMessage(), result.getMessage());
   }
 
   @Test

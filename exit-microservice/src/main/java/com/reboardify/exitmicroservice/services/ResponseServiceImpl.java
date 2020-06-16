@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 /**
- * ResponseServiceImpl handles server responses
+ * This service contains the business logic for checking the server responses.
  */
 @Service
 public class ResponseServiceImpl implements ResponseService {
