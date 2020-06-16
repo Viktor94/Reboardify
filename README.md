@@ -30,3 +30,8 @@ It is possible to set the percentage of employees that can stay in office at the
 **PORT** = individual unsued port for each services\
 **DB_MS_URL** = http://<span></span>localhost:(database microservice port)\
 **EUREKA_URL** = http://<span></span>localhost:(service discovery port)/eureka/
+
+### Application
+
+**PORT** is set to static 9999 due to postman testing\
+**EUREKA_URL** = http://<span></span>localhost:(service discovery port)/eureka/
