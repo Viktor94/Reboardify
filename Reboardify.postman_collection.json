@@ -1,0 +1,1780 @@
+{
+	"info": {
+		"_postman_id": "7e0f51d0-b00b-46eb-a04c-12a2585ca2b8",
+		"name": "Reboardify",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register - successful1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e606b956-5221-4e17-ac74-7a929063ea48",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"You have registered successfully!\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : \"test1\"}"
+				},
+				"url": {
+					"raw": "http://localhost:9999/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register - successful2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0dc37f3e-a955-46e8-a3f4-1cfcf1da43b1",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"You have registered successfully!\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : \"test2\"}"
+				},
+				"url": {
+					"raw": "http://localhost:9999/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register - successful3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f4d52bd1-b522-4f89-8579-198b400cd8a7",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"You have registered successfully!\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : \"test3\"}"
+				},
+				"url": {
+					"raw": "http://localhost:9999/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register - successful4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "158ac428-02e9-4cc9-87b8-0c187545aacc",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"You have registered successfully!\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : \"test4\"}"
+				},
+				"url": {
+					"raw": "http://localhost:9999/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register - already registered1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1519ac92-fd12-41c1-bc6f-0b060f64d32a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"This ID is already registered!\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : \"test1\"}"
+				},
+				"url": {
+					"raw": "http://localhost:9999/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Status - can enter1",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "63fcba1b-80b8-4e78-9916-ea7b541e6018",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b661e1ae-2083-4190-98ca-26cc463874b4",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"You can enter\");\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : \"test1\"}"
+				},
+				"url": {
+					"raw": "http://localhost:9999/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Status - can enter2",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "98fde35f-a90f-4df9-a561-1badc34b2995",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "738e3636-7674-4173-ba50-8d55e11fdb05",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"You can enter\");\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : \"test2\"}"
+				},
+				"url": {
+					"raw": "http://localhost:9999/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Status - can not enter3 - position is 1",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "2a88a8a4-09b8-48f1-9477-61173e7f01df",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "d8d6ec50-baa6-4ff5-9ad8-6f7a91f73be0",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Your position in the queue: 1\");\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : \"test3\"}"
+				},
+				"url": {
+					"raw": "http://localhost:9999/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Status - can not enter4 - position is 2",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "355f51f3-9409-4045-9b5b-f0ceb76545d9",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "ed52c128-aa6f-4ce7-b0da-3b8193bf27c4",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Your position in the queue: 2\");\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : \"test4\"}"
+				},
+				"url": {
+					"raw": "http://localhost:9999/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Entry - successful1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "02edb387-8400-4af5-bf53-842a50c2256f",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Employee: test1 has successfully entered.\");\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : \"test1\"}"
+				},
+				"url": {
+					"raw": "http://www.localhost:9999/entry",
+					"protocol": "http",
+					"host": [
+						"www",
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"entry"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Entry - can not enter3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6e63e304-3ecc-47f7-acfd-2d05ff5b5346",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Employee: test3 was unauthorized to enter.\");\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : \"test3\"}"
+				},
+				"url": {
+					"raw": "http://www.localhost:9999/entry",
+					"protocol": "http",
+					"host": [
+						"www",
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"entry"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Entry - successful2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "922c3143-d541-4fc7-a66e-e46222135f28",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Employee: test2 has successfully entered.\");\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : \"test2\"}"
+				},
+				"url": {
+					"raw": "http://www.localhost:9999/entry",
+					"protocol": "http",
+					"host": [
+						"www",
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"entry"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Exit - successful2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6c91efa4-5c9f-43ef-8504-0209443496cf",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Employee: test2 has left.\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : \"test2\"}"
+				},
+				"url": {
+					"raw": "http://localhost:9999/exit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"exit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Exit - fail2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "38bca19c-728c-4a03-b28a-03d31f55c793",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Employee: test2 tried to exit without entering the office.\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : \"test2\"}"
+				},
+				"url": {
+					"raw": "http://localhost:9999/exit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"exit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Status - can enter3",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ad8a100d-a222-441f-8093-b3a5a29ea967",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "4e50ebad-b74f-45f0-8c45-d1757e8a62da",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"You can enter!\");\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : \"test3\"}"
+				},
+				"url": {
+					"raw": "http://localhost:9999/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Status - can not enter4 - position is 1",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "df4fbca1-d548-41fa-88b2-594639a6573e",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "f4dc73d4-c0d6-400d-bfcc-380765ce872a",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Your position in the queue: 1\");\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : \"test4\"}"
+				},
+				"url": {
+					"raw": "http://localhost:9999/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Exit - successful1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "86b9c94d-117c-4daa-898e-411f4960089a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Employee: test1 has left.\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : \"test1\"}"
+				},
+				"url": {
+					"raw": "http://localhost:9999/exit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"exit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Status - not registered1",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "8de8c28f-b536-467e-acdc-e350686a508f",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "994f217a-7096-44d6-bb6d-6d5f80e0376a",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"You are not registered!\");\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : \"test1\"}"
+				},
+				"url": {
+					"raw": "http://localhost:9999/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Entry - fail1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "abf7cf2b-1e9f-4cf7-88fa-1ed026a5d42a",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Employee: test1 was unauthorized to enter.\");\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : \"test1\"}"
+				},
+				"url": {
+					"raw": "http://www.localhost:9999/entry",
+					"protocol": "http",
+					"host": [
+						"www",
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"entry"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register - fail - empty string",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "95c9f9f1-824f-4a97-b4a6-051cbde0e348",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Bad Request\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : }"
+				},
+				"url": {
+					"raw": "http://localhost:9999/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register - fail - null string",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d3e098de-4e25-4b1e-9ad9-e37d189e244a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : null}"
+				},
+				"url": {
+					"raw": "http://localhost:9999/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register - fail - method not allowed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "936db79a-ff1f-426a-b389-ab6ad0efe8f6",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(405);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Method Not Allowed\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : \"test\"}"
+				},
+				"url": {
+					"raw": "http://localhost:9999/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Status - fail - empty string",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "c9eee98d-8c01-4b51-a9c6-307ea581053c",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "8a8dbd9b-81b3-4bca-b0e7-c1a28e421159",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Bad Request\");\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : }"
+				},
+				"url": {
+					"raw": "http://localhost:9999/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Status - fail - null string",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "680931b3-47ba-4af6-9ad5-d2fb074c3df7",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "37ecdc73-dc7e-4219-bc04-46480b93437d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : null}"
+				},
+				"url": {
+					"raw": "http://localhost:9999/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Status - fail - method not allowed",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "4e72a7a6-1c6e-4ab6-b3e0-a800663a36a4",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "359cb3f6-6170-4af0-b146-a3c6c9dd11f4",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Method Not Allowed\");\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(405);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : \"test\"}"
+				},
+				"url": {
+					"raw": "http://localhost:9999/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Entry - fail - empty string",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ec3cb6a0-4f58-4f41-af87-b4635d94da99",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Bad Request\");\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : }"
+				},
+				"url": {
+					"raw": "http://www.localhost:9999/entry",
+					"protocol": "http",
+					"host": [
+						"www",
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"entry"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Entry - fail - null string",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b0755d70-6327-4563-924c-de2ff4f41e41",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : null}"
+				},
+				"url": {
+					"raw": "http://www.localhost:9999/entry",
+					"protocol": "http",
+					"host": [
+						"www",
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"entry"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Entry - fail - method not allowed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "32da316e-e202-433f-a561-c0196c171542",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Method Not Allowed\");\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(405);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : \"test\"}"
+				},
+				"url": {
+					"raw": "http://www.localhost:9999/entry",
+					"protocol": "http",
+					"host": [
+						"www",
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"entry"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Exit - fail - empty string",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bbf5d800-f435-47af-8d13-c80699f91789",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Bad Request\");\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : }"
+				},
+				"url": {
+					"raw": "http://localhost:9999/exit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"exit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Exit - fail - null string",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7718833a-b4fc-4502-a8a6-6619035c50a3",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : null}"
+				},
+				"url": {
+					"raw": "http://localhost:9999/exit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"exit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Exit - fail - method not allowed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3d695135-8937-4ced-9594-0467a92fd723",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Method Not Allowed\");\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(405);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : \"test\"}"
+				},
+				"url": {
+					"raw": "http://localhost:9999/exit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"exit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Entry - successful3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "19b13419-7b17-4bb1-a23b-3f7bc45aa9b1",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Employee: test3 has successfully entered.\");\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : \"test3\"}"
+				},
+				"url": {
+					"raw": "http://www.localhost:9999/entry",
+					"protocol": "http",
+					"host": [
+						"www",
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"entry"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Entry - successful4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7b2301ff-8cac-450f-a058-b6abae9e03c5",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Employee: test4 has successfully entered.\");\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : \"test4\"}"
+				},
+				"url": {
+					"raw": "http://www.localhost:9999/entry",
+					"protocol": "http",
+					"host": [
+						"www",
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"entry"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Exit - successful3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "45d0c5e8-ec5c-4b03-869b-301ad272848a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Employee: test3 has left.\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : \"test3\"}"
+				},
+				"url": {
+					"raw": "http://localhost:9999/exit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"exit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Exit - successful4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7da7032e-c739-41c7-b206-4cd3ca5f1d77",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Employee: test4 has left\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\" : \"test4\"}"
+				},
+				"url": {
+					"raw": "http://localhost:9999/exit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"exit"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
