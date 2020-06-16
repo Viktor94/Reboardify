@@ -19,7 +19,9 @@ public class ResponseServiceImpl implements ResponseService {
    */
   @Override
   public ResponseEntity<?> checkServerResponse(ResponseEntity<?> response) {
-    assert response != null;
+    if (response == null) {
+      return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
     if (response.getStatusCode().is4xxClientError()) {
       return new ResponseEntity<>(new ErrorMessage("This ID is already registered!"),
           HttpStatus.OK);

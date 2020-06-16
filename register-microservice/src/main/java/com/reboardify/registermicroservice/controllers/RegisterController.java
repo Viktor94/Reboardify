@@ -61,8 +61,8 @@ public class RegisterController {
               ex -> ex.getRawStatusCode() == 500 ? Mono
                   .just(new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR)) : Mono.error(ex))
           .block();
-      return responseService.checkServerResponse(response);
 
+      return responseService.checkServerResponse(response);
     } catch (Exception e) {
       return new ResponseEntity<>(new ErrorMessage("Could not connect to server, try again later."),
           HttpStatus.OK);

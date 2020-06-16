@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
  * ResponseServiceImpl handles server responses
  */
 @Service
-public class StatusServiceImpl implements StatusService {
+public class ResponseServiceImpl implements ResponseService {
 
   /**
    * <p>This method is used to process the response from the database microservice</p>
@@ -20,8 +20,9 @@ public class StatusServiceImpl implements StatusService {
    */
   @Override
   public ResponseEntity<?> checkResponse(ResponseEntity<?> response) {
-    assert response != null;
-
+    if (response == null) {
+      return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
     Position position = (Position) response.getBody();
 
     assert position != null;
