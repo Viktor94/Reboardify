@@ -23,10 +23,10 @@ It is possible to set the percentage of employees that can stay in office at the
 ### Service discovery
 
 **PORT** = any unused port but it will be used in the EUREKA_URL for other microservices \
-**EUREKA_URL** = http://localhost:{service discovery port}/eureka/
+**EUREKA_URL** = http://<span></span>localhost:(service discovery port)/eureka/
 
 ### Register, Status, Entry, Exit microservices
 
 **PORT** = individual unsued port for each services\
-**DB_MS_URL** = http://localhost:(database microservice port)\
-**EUREKA_URL** = http://localhost:(service discovery port)/eureka/
+**DB_MS_URL** = http://<span></span>localhost:(database microservice port)\
+**EUREKA_URL** = http://<span></span>localhost:(service discovery port)/eureka/

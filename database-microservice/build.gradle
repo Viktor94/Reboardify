@@ -4,11 +4,6 @@ plugins {
     id 'java'
 }
 
-javadoc {
-    source = sourceSets.main.allJava
-    classpath = configurations.compile
-}
-
 group = 'com.reboardify'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
@@ -21,7 +16,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    runtimeOnly 'com.h2database:h2'
 }
 
 test {

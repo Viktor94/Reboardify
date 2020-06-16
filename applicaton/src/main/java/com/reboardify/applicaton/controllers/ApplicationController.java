@@ -61,6 +61,7 @@ public class ApplicationController {
   /**
    * <p>This method gets the position of an employee</p>
    *
+   * @param employee contains the id of the employee
    * @return it returns with a response entity containing a message
    */
   @GetMapping("/status")

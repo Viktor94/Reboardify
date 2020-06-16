@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DatabaseController {
 
+  /**
+   * Database service contains the business logic to modify and get authorized and queue lists
+   */
   private final DatabaseService databaseService;
 
   @Autowired

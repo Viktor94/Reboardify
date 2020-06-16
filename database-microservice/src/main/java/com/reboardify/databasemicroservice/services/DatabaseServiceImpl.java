@@ -26,6 +26,11 @@ public class DatabaseServiceImpl implements DatabaseService {
    */
   private Date date = new Date();
 
+  /**
+   * <p>This method is used to get the authorized list</p>
+   *
+   * @return it returns the authorized list
+   */
   @Override
   public LinkedList<String> getAuthorizedList() {
     return authorized;
@@ -34,7 +39,7 @@ public class DatabaseServiceImpl implements DatabaseService {
   /**
    * <p>This method is used to get the queue list</p>
    *
-   * @return it returns the queu list
+   * @return it returns the queue list
    */
   @Override
   public LinkedList<String> getQueueList() {
