@@ -2,7 +2,7 @@ package com.reboardify.statusmicroservice.controllers;
 
 import com.reboardify.statusmicroservice.modells.Employee;
 import com.reboardify.statusmicroservice.modells.Position;
-import com.reboardify.statusmicroservice.services.StatusService;
+import com.reboardify.statusmicroservice.services.ResponseService;
 import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -27,18 +27,19 @@ public class StatusController {
   /**
    * Response service is used to process the responses
    */
-  private final StatusService statusService;
+  private final ResponseService responseService;
 
   @Autowired
   public StatusController(@Qualifier("getWebClientBuilder") Builder webclientBuilder,
-      StatusService statusService) {
+      ResponseService responseService) {
     this.webclientBuilder = webclientBuilder;
-    this.statusService = statusService;
+    this.responseService = responseService;
   }
 
   /**
    * <p>This method sends an http request to the database microservice
    * when the employee tries to get the status</p>
+   *
    * @return it returns with a response entity containing a message
    */
   @PostMapping("/status")
@@ -54,6 +55,6 @@ public class StatusController {
         .toEntity(Position.class)
         .block();
 
-    return statusService.checkResponse(response);
+    return responseService.checkResponse(response);
   }
 }

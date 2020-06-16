@@ -5,5 +5,5 @@ import org.springframework.http.ResponseEntity;
 
 public interface RequestValidationService {
 
-  ResponseEntity<?> validateRequest(Employee employee);
+  Boolean isRequestValid(Employee employee);
 }

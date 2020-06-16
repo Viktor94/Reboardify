@@ -17,9 +17,10 @@ dependencies {
     compile 'org.projectreactor:reactor-spring:1.0.1.RELEASE'
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: '2.2.3.RELEASE'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    testImplementation('org.springframework.boot:spring-boot-starter-test') {
-        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-    }
+    testImplementation'org.springframework.boot:spring-boot-starter-test'
+    testCompile group: 'com.squareup.okhttp', name: 'mockwebserver', version: '2.7.5'
+    // https://mvnrepository.com/artifact/org.mock-server/mockserver-netty
+    testCompile group: 'org.mock-server', name: 'mockserver-netty', version: '5.10.0'
 }
 
 test {

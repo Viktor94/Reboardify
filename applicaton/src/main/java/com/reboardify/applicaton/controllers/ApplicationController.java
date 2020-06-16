@@ -2,11 +2,13 @@ package com.reboardify.applicaton.controllers;
 
 import com.reboardify.applicaton.domains.Employee;
 import com.reboardify.applicaton.domains.Message;
+import com.reboardify.applicaton.services.RequestValidationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,10 +23,13 @@ public class ApplicationController {
 
   private final Logger logger = LoggerFactory.getLogger(ApplicationController.class);
   private final Builder webclientBuilder;
+  private final RequestValidationService requestValidationService;
 
   @Autowired
-  public ApplicationController(@Qualifier("getWebclientBuilder") Builder webclientBuilder) {
+  public ApplicationController(@Qualifier("getWebclientBuilder") Builder webclientBuilder,
+      RequestValidationService requestValidationService) {
     this.webclientBuilder = webclientBuilder;
+    this.requestValidationService = requestValidationService;
   }
 
   @PostMapping("/register")
@@ -68,13 +73,16 @@ public class ApplicationController {
   }
 
   private ResponseEntity<?> sendRequest(String url, Employee employee) {
-    return webclientBuilder.build()
-        .post()
-        .uri(url)
-        .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-        .body(Mono.just(employee), Employee.class)
-        .retrieve()
-        .toEntity(Message.class)
-        .block();
+    if (requestValidationService.isRequestValid(employee)) {
+      return webclientBuilder.build()
+          .post()
+          .uri(url)
+          .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+          .body(Mono.just(employee), Employee.class)
+          .retrieve()
+          .toEntity(Message.class)
+          .block();
+    }
+    return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
   }
 }

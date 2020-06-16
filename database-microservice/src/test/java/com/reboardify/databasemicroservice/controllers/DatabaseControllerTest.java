@@ -43,7 +43,6 @@ class DatabaseControllerTest {
     this.mockMvc = standaloneSetup(new DatabaseController(databaseService)).build();
     employee = new Employee("123");
     objectMapper = new ObjectMapper();
-    System.out.println("asd");
   }
 
   @Test
