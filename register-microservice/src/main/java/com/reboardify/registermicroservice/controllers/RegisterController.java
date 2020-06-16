@@ -1,7 +1,7 @@
 package com.reboardify.registermicroservice.controllers;
 
 import com.reboardify.registermicroservice.models.Employee;
-import com.reboardify.registermicroservice.models.ErrorMessage;
+import com.reboardify.registermicroservice.models.Message;
 import com.reboardify.registermicroservice.services.ResponseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -42,6 +42,8 @@ public class RegisterController {
   /**
    * <p>This method sends an http request to the database microservice
    * when the employee tries to register</p>
+   * @param employee employee is used to get the id of it
+   * @return It returns with a response entity containing a message with the status
    */
   @PostMapping("/register")
   public ResponseEntity<?> register(@RequestBody Employee employee) {
@@ -64,7 +66,7 @@ public class RegisterController {
 
       return responseService.checkServerResponse(response);
     } catch (Exception e) {
-      return new ResponseEntity<>(new ErrorMessage("Could not connect to server, try again later."),
+      return new ResponseEntity<>(new Message("Could not connect to server, try again later."),
           HttpStatus.OK);
     }
   }

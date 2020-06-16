@@ -39,6 +39,8 @@ public class ExitController {
   /**
    * <p>This method sends an http request to the database microservice
    * when the employee tries to leave</p>
+   * @param employee employee is used to get the id of it
+   * @return It returns with a response entity containing a message with the status
    */
   @PostMapping("/exit")
   public ResponseEntity<?> exit(@RequestBody Employee employee) {

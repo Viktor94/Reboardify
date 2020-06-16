@@ -7,6 +7,9 @@ import java.util.Date;
 import java.util.LinkedList;
 import org.springframework.stereotype.Service;
 
+/**
+ * This service contains the business logic for modifying the authorized and queue lists.
+ */
 @Service
 public class DatabaseServiceImpl implements DatabaseService {
 
@@ -119,7 +122,6 @@ public class DatabaseServiceImpl implements DatabaseService {
     if (employee != null) {
       return new Position(queue.indexOf(employee.getId()) + 1);
     }
-
     return new Position(-1);
   }
 
