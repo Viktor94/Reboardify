@@ -9,7 +9,7 @@ public class RequestValidationServiceImpl implements RequestValidationService {
 
   @Override
   public Boolean isRequestValid(Employee employee) {
-    if (employee == null){
+    if (employee == null || employee.getId() == null){
       return false;
     }
     return !employee.getId().equals("") && StringUtils
